@@ -4,6 +4,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   res.render('index')
+    .catch(error => console.log(error))
 })
 
 module.exports = router

@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
           res.render('show', { randomNumbers })//render畫面
         })
     })
+    .catch(error => console.log(error))
 })
 
 module.exports = router
