@@ -8,10 +8,6 @@ const urlSchema = new Schema({
   tinyURL: {
     type: String,
     required: false
-  },
-  randomNumbers: {
-    type: String,
-    required: false
   }
 })
 

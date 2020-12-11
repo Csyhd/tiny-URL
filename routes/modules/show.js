@@ -6,27 +6,27 @@ const creatRandomNumber = require('../../public/javacsripts/transform')
 
 router.post('/', (req, res) => {
   let URL = req.body.URL
-  let randomNumbers = ''
+  let tinyURL = ''
   let creatURL = ''
   let status = true
 
   Urls.find()
     .then((urls) => {
       while (status) { //判斷短網址是否重複
-        randomNumbers = creatRandomNumber() //呼叫亂數產生函數
+        tinyURL = creatRandomNumber() //呼叫亂數產生函數
         status = urls.some((url) => { //比對亂數是否重複
-          return url.randomNumbers === randomNumbers
+          return url.randomNumbers === tinyURL
         })
       }
     })
     .then(() => {
       creatURL = {
         URL,
-        randomNumbers
+        tinyURL
       }
       return Urls.create(creatURL)// 把產生的資料丟進資料庫裡
         .then(() => {
-          res.render('show', { randomNumbers })//render畫面
+          res.render('show', { tinyURL })//render畫面
         })
     })
     .catch(error => console.log(error))
