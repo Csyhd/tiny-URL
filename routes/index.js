@@ -6,7 +6,7 @@ const guide = require('./modules/guide')
 
 router.use('/', home)
 router.use('/tinyURL', show)
-router.use('/https://damp-depths-56644.herokuapp.com', guide)
+// router.use('/https://damp-depths-56644.herokuapp.com', guide)
 
 
 module.exports = router
