@@ -12,9 +12,9 @@ router.post('/', (req, res) => {
 
   Urls.find()
     .then((urls) => {
-      while (status) { //判斷短網址是否重複
+      while (status) { //使用while迴圈狀態判斷短網址是否重複
         tinyURL = creatRandomNumber() //呼叫亂數產生函數
-        status = urls.some((url) => { //比對亂數是否重複
+        status = urls.some((url) => { //比對亂數是否重複並且回傳狀態
           return url.randomNumbers === tinyURL
         })
       }
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
       }
       return Urls.create(creatURL)// 把產生的資料丟進資料庫裡
         .then(() => {
-          res.render('show', { tinyURL })//render畫面
+          res.render('show', { creatURL })//render畫面
         })
     })
     .catch(error => console.log(error))
