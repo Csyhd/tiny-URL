@@ -7,9 +7,9 @@
       <form action="/tinyURL" method="post" class="row justify-content-center">
         <div class="form-group text-center col-10" style="font-size:50px">
           <label for="URL">短網址產生器</label>
-          <input type="text" class="form-control {{isInvalid}}" id="URL" name="URL">
+          <input type="text" class="form-control text-center {{isInvalid}}" id="URL" name="URL" placeholder="請輸入要縮短的網址">
           <div class="invalid-feedback">
-            請輸入網址
+            請輸入網址！
           </div>
         </div>
         <button type="submit" class="btn btn-danger col-3">送出</button>
