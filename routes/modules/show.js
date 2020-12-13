@@ -4,10 +4,11 @@ const Urls = require('../../models/Urls')
 const creatRandomNumber = require('../../public/javacsripts/transform')
 
 
+
 router.post('/', (req, res) => {
 
   let URL = req.body.URL
-  if (URL !== '') {
+  if (URL !== '') { //判斷input是否有輸入值
     let tinyURL = ''
     let creatURL = ''
     let status = true
@@ -32,8 +33,9 @@ router.post('/', (req, res) => {
           })
       })
       .catch(error => console.log(error))
-  } else {
-    res.redirect('/')
+  } else { //如果沒有輸入及執行以下動作
+    const isInvalid = 'is-invalid' //使用bootstrap提供的功能,在input插入is-invalid提示使用者
+    res.render('index', { isInvalid })
   }
 })
 
