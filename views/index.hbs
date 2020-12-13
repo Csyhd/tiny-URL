@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <i>URL</i>
+  <div class="row mt-5">
+    <div class="col-12 text-center" style="font-size:100px">
+      <i class="fas fa-link"></i>
     </div>
-    <div class="col-12">
-      <form action="/tinyURL" method="post">
-        <div class="form-group">
-          <label for="URL">URL</label>
+    <div class="col-12 mt-5">
+      <form action="/tinyURL" method="post" class="row justify-content-center">
+        <div class="form-group text-center col-10" style="font-size:50px">
+          <label for="URL">短網址產生器</label>
           <input type="text" class="form-control" id="URL" name="URL">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-danger col-3">送出</button>
       </form>
     </div>
   </div>
