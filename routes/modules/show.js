@@ -7,7 +7,7 @@ const creatRandomNumber = require('../../public/javacsripts/transform')
 
 router.post('/', (req, res) => {
 
-  let URL = req.body.URL
+  let URL = req.body.URL.trim()
   if (URL !== '') { //判斷input是否有輸入值
     let tinyURL = ''
     let creatURL = ''
