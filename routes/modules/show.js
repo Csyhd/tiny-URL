@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Urls = require('../../models/Urls')
 const creatRandomNumber = require('../../public/javacsripts/transform')
+const PORT = process.env.PORT || 3000
 
 
 
@@ -9,27 +10,18 @@ router.post('/', (req, res) => {
 
   let URL = req.body.URL.trim()
   if (URL !== '') { //判斷input是否有輸入值
-    let tinyURL = ''
-    let creatURL = ''
-    let status = true
-
     Urls.find()
       .then((urls) => {
-        while (status) { //使用while迴圈狀態判斷短網址是否重複
-          tinyURL = creatRandomNumber() //呼叫亂數產生函數
-          status = urls.some((url) => { //比對亂數是否重複並且回傳狀態
-            return url.randomNumbers === tinyURL
-          })
+        let tinyURL = creatRandomNumber() //呼叫亂數產生函數
+        while (urls.some((url) => url.tinyURL === tinyURL)) { //使用while迴圈狀態判斷短網址是否重複
+          tinyURL = creatRandomNumber()
         }
+        return tinyURL
       })
-      .then(() => {
-        creatURL = {
-          URL,
-          tinyURL
-        }
-        return Urls.create(creatURL)// 把產生的資料丟進資料庫裡
+      .then((tinyURL) => {
+        return Urls.create({ URL, tinyURL })// 把產生的資料丟進資料庫裡
           .then(() => {
-            res.render('show', { creatURL })//render畫面
+            res.render('show', { URL, tinyURL, PORT })//render畫面
           })
       })
       .catch(error => console.log(error))
