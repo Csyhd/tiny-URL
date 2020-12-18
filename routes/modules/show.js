@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Urls = require('../../models/Urls')
 const creatRandomNumber = require('../../public/javacsripts/transform')
-const DOMAINS = process.env.HEROKU_DOMAINS
+const DOMAINS = process.env.HEROKU_DOMAINS //取得heroku domains
 
 
 
