@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Urls = require('../../models/Urls')
 const creatRandomNumber = require('../../public/javacsripts/transform')
-const PORT = process.env.PORT || 3000
+const DOMAINS = process.env.HEROKU_DOMAINS
 
 
 
@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
       .then((tinyURL) => {
         return Urls.create({ URL, tinyURL })// 把產生的資料丟進資料庫裡
           .then(() => {
-            res.render('show', { URL, tinyURL, PORT })//render畫面
+            res.render('show', { URL, tinyURL, DOMAINS })//render畫面
           })
       })
       .catch(error => console.log(error))
